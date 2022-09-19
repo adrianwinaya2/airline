@@ -9,8 +9,23 @@ jobs:
     steps:
     - uses: actions/checkout@v2 # ! github action : checkout code
     - name: Run Django unit tests # description
+    - command: ssh-keyscan github.com >> ~/.ssh/known_hosts
       run: |
         pip3 install --user django
         python3 manage.py test
 
-# Github action bisa dibuat sendiri
+# Github action bisa dibuat sendiri. Setelah dipush ke repo, github action
+# bisa diliat di tab "Actions" utk history. Bagian error bisa diklik, lalu klik lagi
+# dan lgsg diarahin sama github ke bagian error nya dari django test
+# ini lo sangar e github
+
+# Github command :
+# 1. 'git init' di folder
+# 2. 'git status' utk cek perubahan apa aja
+# 3. 'git add .' utk add semua perubahan
+# 4. 'git commit -m "[Deskripsi commit]" ' utk commit
+# 5. 'git remote add origin [link repo]' utk remote repo dari folder local
+# 6. 'git branch -M main' untuk buat branch dgn nama "main"
+# 7. 'git push -u origin main' push ke repo dgn branch main
+
+# Note : step 5-7 ada instruksinya pas repo kosong (baru dibuat)
