@@ -1,0 +1,16 @@
+name: Testing # nama workflow : untuk test
+on: push # kapan workflow ini dirun : saat orang push
+
+# apa yang di run
+jobs:
+  test_project: # gak harus "test_project", terserah
+    runs-on: ubuntu-latest # run di virtual machines (OS) apa
+    # step - step nya
+    steps:
+    - uses: actions/checkout@v2 # ! github action : checkout code
+    - name: Run Django unit tests # description
+      run: |
+        pip3 install --user django
+        python3 manage.py test
+
+# Github action bisa dibuat sendiri
